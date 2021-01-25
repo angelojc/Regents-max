@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+  <style>
+
+    p {
+      font-size: 26px;
+    }
+
+    li {
+      font-size: 16px;
+    }
+
+    html, body {
+      background-color: #f9f9f9;
+      height: 100%;
+    }
+
+    strong {
+      font-size: 18px;
+    }
+
+    span {
+      font-weight: normal;
+    }
+
+    td {
+      border: 1px solid darkgrey;
+      padding: 10px;
+    }
+
+    .results {
+      background-color: #f9f9f9;
+    }
+
+    .each-row, .side-scroll {
+      background-color: white;
+      margin: 10px;
+      padding: 15px;
+      box-shadow: 4px 4px 4px lightgrey;
+    }
+
+    .submit_button {
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+    }
+
+    .mega-row {
+      background-color: #f9f9f9;
+    }
+
+
+    .side-scroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin: 0px;
+    }
+
+    .picture {
+      margin: 5px;
+      padding: 10px;
+      display: inline-block;
+      border: 2px solid black;
+      height: 100%;
+    }
+
+  </style>
+
+  <form action="" method="post">
+  <div class="container">
+    <br>
+    <br>
+    <br>
+    <h1> Assignment Builder: Living Environment Regents </h1>
+    <br>
+    <br>
+
+    <div class="button-row row">
+      <div class="overflow-auto form-group col-lg-3">
+        <a href='/teacher_index' class="btn btn-primary">Back to Classes</a>
+      </div>
+    </div>
+
+    <h2> Assignment Name </h2>
+    <div class="each-row row center" id="row1">
+      <div class="border overflow-auto form-group col-md-12" >
+        {{ form.assignment_name(size=50) }}
+      </div>
+    </div>
+
+    <h2> Assignment Summary </h2>
+    <div class="each-row row center" id="row1">
+      <div class="border overflow-auto form-group col-md-12" >
+        <table>
+            <h3>10 Questions </h3> <br>
+          <tr>
+            <td>
+              <h4>Standard 4, Key Idea 1: <span>Living things are both similar and different from each other and from nonliving things</span> </h4>
+            </td>
+            <td>
+              <h4>3 questions</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4>Standard 4, Key Idea 3: <span>Individual organisms and species change over time</span> </h4>
+            </td>
+            <td>
+              <h4>3 questions</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4>Standard 4, Key Idea 4: <span>The continuity of life is sustatined through reproduction and development</span> </h4>
+            </td>
+            <td>
+              <h4>2 questions</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4>Lab 2: <span></span> </h4>
+            </td>
+            <td>
+              <h4>2 questions</h4>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <h2> Question Summary </h2>
+    <div class="mega-row big-container border border-secondary" id="row q_container" >
+      <div class="each-row row center" id="row1">
+        <div class="border overflow-auto form-group col-md-12" >
+            <div class="side-scroll">
+              {% for question in quiz_data %}
+                <div class="picture" style="height:100%;">
+                  <h3>Question # {{ question[5] }}</h3>
+                  <h4>Standard: {{ question[3] }}</h4>
+                  <h4>Key Idea: {{ question[4] }}</h4>
+                  <br>
+                  <h4>Correct Answer: {{ question[1] }}</h4>
+
+                  <img src=" {{ question[0] }} "> <br>
+                  <h4>Feedback (optional)</h4><br>
+                  {{ feedback_list[(question[5] - 1)] }}<br>
+                </div>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <h2> Options </h2>
+      <div class="mega-row big-container border border-secondary" id="row q_container" >
+        <div class="each-row row center" id="row1">
+          <h4> Default options are: </h4>
+          <ul>
+            <li> score hidden on submit, displayed on teacher release </li>
+            <li> feedback hidden on submit, displayed on teacher release </li>
+            <li> multiple attempts disabled </li>
+            <li> generate PDF enabled </li>
+            <li> PDF copy: English only </li>
+          </ul>
+          <br>
+          <table>
+            <tr>
+              <td>
+                <strong><p> Custom options </p></strong>
+                {{ form.display_score }}{{ form.display_score.label }} <br>
+                {{ form.display_comments }}{{ form.display_comments.label }} <br>
+                {{ form.multiple_attempts }}{{ form.multiple_attempts.label }} <br>
+                {{ form.pdf_disable  }}{{ form.pdf_disable.label }} <br>
+              </td>
+              <td>
+                <strong><p> Create PDF copies in specified languages </p></strong>
+                {{ form.pdf_copy_spanish }}{{ form.pdf_copy_spanish.label }}  <br>
+                {{ form.pdf_copy_chinese }}{{ form.pdf_copy_chinese.label }}  <br>
+                {{ form.pdf_copy_creole }}{{ form.pdf_copy_creole.label }}  <br>
+                {{ form.pdf_copy_korean }}{{ form.pdf_copy_korean.label }}  <br>
+                {{ form.pdf_copy_russian }}{{ form.pdf_copy_russian.label }}  <br>
+              </td>
+            </tr>
+          </table>
+          <br>
+          <br>
+          {{ form.custom_submit(style="float: right; height:60px;width:100%; font-size:20px; background-color:#ffa74d") }}
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+
+  </div>
+  </form>
+
+{% endblock %}

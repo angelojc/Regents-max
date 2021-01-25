@@ -1,0 +1,10 @@
+<!-- REGENTS MAX -->
+
+{% extends "base.html" %}
+
+{% block app_content %}
+		<h1> Hi, {{ current_user.username}}! You're a ADMIN</h1>
+		{% for post in posts %}
+		<div><p>{{ post.author.username}} says <b>{{ post.body}}</b></p></div>
+		{% endfor %}
+{% endblock %}

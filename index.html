@@ -1,0 +1,83 @@
+<!-- REGENTS MAX -->
+
+{% extends "base.html" %}
+
+{% block app_content %}
+	<style>
+
+		body {
+			background-color: #f9f9f9;
+		}
+
+	.content {
+		background-color: white;
+		margin: 10px;
+		padding: 15px;
+		box-shadow: 4px 4px 4px lightgrey;
+	}
+
+	.classroom:hover {
+		box-shadow: 8px 8px 8px lightgrey;
+	}
+
+	.big-container {
+		background-color: #f9f9f9;
+	}
+
+	td {
+		border: 1px solid darkgrey;
+		margin: 10px;
+		padding: 10px;
+	}
+
+	</style>
+
+	<div class="conatiner">
+		<br>
+		<br>
+		<br>
+    <div class="content row big-container border border-secondary" id="row q_container" >
+
+
+			<form action="" method="post">
+				<!-- this is a hidden tag to protect against cross-side request forgery-->
+				{{ form.hidden_tag() }}
+					<h1> Hi, {{ current_user.username}}! Select your account type</h1> <br>
+
+					<p> {{ form.username.label }} {{ form.username(size=32) }} </p><br>
+					<span> {{ form.is_student() }} {{ form.is_student.label}} </span> <br> <br>
+					<span> {{ form.is_teacher() }} {{ form.is_teacher.label}} </span> <br>
+					<p>{{ form.teacher_valid.label }} {{ form.teacher_valid() }} </p> <br>
+					<span> {{ form.is_admin() }} {{ form.is_admin.label}} </span> <br>
+					<span>	{{ form.admin_valid.label }} {{ form.admin_valid() }} </span> <br><br>
+					<label class="btn btn-secondary">
+						<span> {{ form.submit(style="height:60px;width:100%; font-size:20px; background-color:#ffa74d") }}{{ form.submit().label}} </span>
+					</label>
+			</form>
+
+		</div>
+		<h3> Test Users </h3>
+    <table>
+      <tr>
+        <td>
+          <p><strong>Admin Account</strong></p>
+          <p>User: PierreO </p>
+          <p>Pass: Runner1900! </p>
+          <p>Admin code: admin </p>
+        </td>
+        <td>
+          <p><strong>Teacher Account</strong></p>
+          <p>User: LoganB </p>
+          <p>Pass: Runner1900! </p>
+          <p>Teacher code: teacher </p>
+        </td>
+        <td>
+          <p><strong>Student Account</strong></p>
+          <p>User: DavidC </p>
+          <p>Pass: Runner1900! </p>
+        </td>
+      </tr>
+    </table>
+	</div>
+
+{% endblock %}

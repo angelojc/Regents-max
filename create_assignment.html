@@ -1,0 +1,416 @@
+<!-- REGENTS MAX -->
+
+{% extends "base.html" %}
+
+{% block app_content %}
+  <style>
+
+
+  body {
+    background-color: #f9f9f9;
+  }
+
+  strong {
+    font-size: 18px;
+  }
+
+  .results {
+    background-color: #f9f9f9;
+  }
+
+  .each-row, .side-scroll {
+    background-color: white;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 4px 4px 4px lightgrey;
+  }
+
+  .submit_button {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+
+  .mega-row {
+    background-color: #f9f9f9;
+  }
+
+
+  .side-scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  }
+
+  .picture {
+    display: inline-block;
+  }
+
+
+
+
+  </style>
+
+  <div class="container">
+    <br>
+    <br>
+    <br>
+    <h1> Assignment Builder: Living Environment Regents </h1>
+    <br>
+
+    <div class="button-row row">
+      <div class="overflow-auto form-group col-lg-3">
+        <a href='/teacher_index' class="btn btn-primary">Back to Classes</a>
+      </div>
+    </div>
+
+
+    <form action="" method="post">
+      <div>
+        <br>
+
+        <h3>Browse Questions By Standard</h3>
+        <div class="mega-row big-container border border-secondary" id="row q_container" >
+          <div class="each-row row center" id="row1">
+            <div class="border overflow-auto form-group col-md-12" >
+              <h3> Standard 1 </h3>
+              <p> Students will use mathematical analysis, scientific inquiry, and engaging design, as appropriate, to pose questions, seek answers, and develop solutions </p>
+              {{ form.s1k1 }} <strong> Key Idea 1 </strong> <br> {{ form.s1k1.label }} <br><br>
+              {{ form.s1k2 }} <strong> Key Idea 2 </strong> <br> {{ form.s1k2.label }} <br><br>
+              {{ form.s1k3 }} <strong> Key Idea 3 </strong> <br> {{ form.s1k3.label }} <br><br>
+            </div>
+          </div>
+
+          <div class="each-row row center" id="row1">
+            <div class="border overflow-auto form-group col-md-12" >
+              <h3> Standard 4 </h3>
+              <p> Students will understand and apply scientific concepts, principles, and theories pertaining to the physical setting and living environment and recognize the historical development of ideas in science </p>
+              {{ form.s4k1 }} <strong> Key Idea 1 </strong> <br> {{ form.s4k1.label }} <br><br>
+              {{ form.s4k2 }} <strong> Key Idea 2 </strong> <br> {{ form.s4k2.label }} <br><br>
+              {{ form.s4k3 }} <strong> Key Idea 3 </strong> <br> {{ form.s4k3.label }} <br><br>
+              {{ form.s4k4 }} <strong> Key Idea 4 </strong> <br> {{ form.s4k4.label }} <br><br>
+              {{ form.s4k5 }} <strong> Key Idea 5 </strong> <br> {{ form.s4k5.label }} <br><br>
+              {{ form.s4k6 }} <strong> Key Idea 6 </strong> <br> {{ form.s4k6.label }} <br><br>
+              {{ form.s4k7 }} <strong> Key Idea 7 </strong> <br> {{ form.s4k7.label }} <br><br>
+            </div>
+          </div>
+
+
+
+
+          <div class="each-row row center" id="row1">
+            <h3> Labs </h3>
+            <div class="border overflow-auto form-group col-md-4" >
+              {{ form.l1 }} <strong> Lab 1 </strong> <br> {{ form.l1.label }} <br><br>
+            </div>
+            <div class="border overflow-auto form-group col-md-4" >
+              {{ form.l2 }} <strong> Lab 2 </strong> <br> {{ form.l2.label }} <br><br>
+            </div>
+            <div class="border overflow-auto form-group col-md-4" >
+              {{ form.l3 }} <strong> Lab 3 </strong> <br> {{ form.l3.label }} <br><br>
+            </div>
+          </div>
+
+          </div>
+        </div>
+
+
+
+
+
+
+        <!-- <table>
+          <tr>
+              <td>
+                <h3>Standard 1</h3>
+                <div style="width:75%">
+                  {{ form.s1k1 }} <strong> Key Idea 1 </strong> {{ form.s1k1.label }} <br><br>
+                  {{ form.s1k2 }} <strong> Key Idea 2 </strong> {{ form.s1k2.label }} <br><br>
+                  {{ form.s1k3 }} <strong> Key Idea 3 </strong> {{ form.s1k3.label }} <br><br>
+                 </div>
+              </td>
+              <td>
+                <h3>Standard 4</h3>
+                <div style="width:75%">
+                  {{ form.s4k1 }} <strong> Key Idea 1 </strong> {{ form.s4k1.label }} <br><br>
+                  {{ form.s4k2 }} <strong> Key Idea 2 </strong> {{ form.s4k2.label }} <br><br>
+                  {{ form.s4k3 }} <strong> Key Idea 3 </strong> {{ form.s4k3.label }} <br><br>
+                  {{ form.s4k4 }} <strong> Key Idea 4 </strong> {{ form.s4k4.label }} <br><br>
+                  {{ form.s4k5 }} <strong> Key Idea 5 </strong> {{ form.s4k5.label }} <br><br>
+                  {{ form.s4k6 }} <strong> Key Idea 6 </strong> {{ form.s4k6.label }} <br><br>
+                  {{ form.s4k7 }} <strong> Key Idea 7 </strong> {{ form.s4k7.label }} <br><br>
+                </div>
+              </td>
+              <td>
+                <h3>Labs</h3>
+                <div>
+                  {{ form.l1 }} <strong> Lab 1 </strong> {{ form.l1.label }} <br><br>
+                  {{ form.l2 }} <strong> Lab 2 </strong> {{ form.l2.label }} <br><br>
+                  {{ form.l3 }} <strong> Lab 3 </strong> {{ form.l3.label }} <br><br>
+                </div>
+              </td>
+          </tr>
+        </table> -->
+      <div class="submit_button">
+        {{ form.search_submit(style="height:60px;width:100%; font-size:20px; background-color:#ffa74d") }}
+      </div>
+    </div>
+
+      <!-- Results will go here -->
+      <div class="results">
+        <h1> Results </h1>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 1: Key Idea 1 </h3>
+            <p>The central purpose of scientific inquiry is to develop explanations of natural phenomena in a continuing and creative process</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 1 %}
+                  {% if standard_question[2] == 1 %}
+                    <div class="picture">
+                      <img src=" {{ standard_question[0] }} ">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 1: Key Idea 2 </h3>
+            <p>Beyond the use of reasoning and consensus, scientific inquiry involves the testing of proposed explanations involving the use of conventional techniques and procedures and usually requiring considerable ingenuity</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 1 %}
+                  {% if standard_question[2] == 2 %}
+                    <div class="picture">
+                      <img src=" {{ standard_question[0] }} ">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 1: Key Idea 3 </h3>
+            <p>The observations made while testing proposed explanations, when analyzed using conventional and invented methods, provide new insights into natural phenomena</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 1 %}
+                <div class="picture">
+                  <img src=" {{ standard_question[0] }} ">
+                </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 4: Key Idea 1 </h3>
+            <p>Living things are both similar and different from each other and from nonliving things</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 4 %}
+                  {% if standard_question[2] == 1 %}
+                    <div class="picture">
+                      <img src=" {{ standard_question[0] }} ">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 4: Key Idea 2 </h3>
+            <p>Organisms inherit genetic information in a variety of ways that result in continuity of structure and function between parents and offspring</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 4 %}
+                  {% if standard_question[2] == 2 %}
+                    <div class="picture">
+                      <img src=" {{ standard_question[0] }} ">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 4: Key Idea 3 </h3>
+            <p>Individual organisms and species change over time</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 4 %}
+                  {% if standard_question[2] == 3 %}
+                    <div class="picture">
+                      <img src=" {{ standard_question[0] }} ">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 4: Key Idea 4 </h3>
+            <p>The continuity of life is sustatined through reproduction and development</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 4 %}
+                  {% if standard_question[2] == 4 %}
+                    <div class="picture">
+                      <img src=" {{ standard_question[0] }} ">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 4: Key Idea 5 </h3>
+            <p>Organisms maintain a dynamic equilibrium that sustains life</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 4 %}
+                  {% if standard_question[2] == 5 %}
+                    <div class="picture">
+                      <img src=" {{ standard_question[0] }} ">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 4: Key Idea 6 </h3>
+            <p>Plants and animals depend on each other and their physical environment</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 4 %}
+                  {% if standard_question[2] == 6 %}
+                    <div class="picture">
+                      <img src=" {{ standard_question[0] }} ">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Standard 4: Key Idea 7 </h3>
+            <p>Human decisions and activities have had a profound impact on the physical and living environment</p>
+            <div class="side-scroll">
+              {% for standard_question in standard_results %}
+                {% if standard_question[1] == 4 %}
+                  {% if standard_question[2] == 7 %}
+                    <div class="picture">
+                      <img src=" {{ standard_question[0] }} ">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Labs: Lab 1 </h3>
+            <div class="side-scroll">
+              {% for lab_question in lab_results %}
+                {% if lab_question[1] == 1 %}
+                  <div class="picture">
+                    <img src=" {{ lab_question[0] }} ">
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Labs: Lab 2 </h3>
+            <div class="side-scroll">
+              {% for lab_question in lab_results %}
+                {% if lab_question[1] == 2 %}
+                  <div class="picture">
+                    <img src=" {{ lab_question[0] }} ">
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Labs: Lab 3 </h3>
+            <div class="side-scroll">
+              {% for lab_question in lab_results %}
+                {% if lab_question[1] == 3 %}
+                  <div class="picture">
+                    <img src=" {{ lab_question[0] }} ">
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="border form-group col-md-12">
+            <h3>Labs: Lab 5 </h3>
+            <div class="side-scroll">
+              {% for lab_question in lab_results %}
+                {% if lab_question[1] == 5 %}
+                  <div class="picture">
+                    <img src=" {{ lab_question[0] }} ">
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="button-row row">
+          <div class="overflow-auto form-group col-lg-3">
+            <a href='/assignment_options' class="btn btn-primary">Next: Assessment Options</a>
+          </div>
+        </div>
+
+
+    </div>
+      </form>
+
+  </div>
+{% endblock %}

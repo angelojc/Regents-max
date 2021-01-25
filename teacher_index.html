@@ -1,0 +1,60 @@
+<!-- REGENTS MAX -->
+
+{% extends "base.html" %}
+
+{% block app_content %}
+<style>
+
+	body {
+		background-color: #f9f9f9;
+	}
+
+.classroom {
+	background-color: white;
+	margin: 10px;
+	padding: 15px;
+	box-shadow: 4px 4px 4px lightgrey;
+}
+
+.classroom:hover {
+	box-shadow: 8px 8px 8px lightgrey;
+}
+
+.big-container {
+	background-color: #f9f9f9;
+}
+
+</style>
+
+		<br>
+		<br>
+		<br>
+
+		<div class="conatiner">
+			<div class="row big-container border border-secondary" id="row q_container" >
+
+				<h1> Welcome, {{ current_user.username}}!</h1>
+				<br>
+				<h2>Your Classes</h2>
+				{% for post in posts %}
+				<div><p>{{ post.author.username}} says <b>{{ post.body}}</b></p></div>
+				{% endfor %}
+
+
+				<div class="overflow-auto form-group col-md-12"  style="height: 550px;">
+					{% for item in all_data %}
+					<div class="classroom">
+							<h3>{{ item[0] }}</h3>
+							<p>{{ item[1] }} Students</p>
+							<a href="{{ url_for('teacherClassroom', destination=item[0]) }}"> go to Classroom </a>
+					</div>
+					{% endfor %}
+
+					<br><br><br><br>
+				</div>
+			</div>
+
+		</div>
+
+
+{% endblock %}

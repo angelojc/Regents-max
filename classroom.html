@@ -1,0 +1,41 @@
+<!-- REGENTS MAX -->
+
+{% extends "base.html" %}
+
+{% block app_content %}
+
+  <style>
+
+    .quizzes {
+      border: 1px solid #000;
+    }
+
+  </style>
+
+
+  <div>
+    <h1> WELCOME TO {{ classroom }} BITCH </h1>
+    <div>
+      <p>Back to classes</p>
+      <table>
+        <tr>
+          <td><p><a href="{{ url_for('createAssignment') }}">click to create an assignment</a></p></td>
+          <td><p>People</p></td>
+          <td><p>Grades</p></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h2>Here are your assigned assessments</h2>
+      {% for item in quizzes %}
+        <div class="quizzes">
+            <p><a href="{{ url_for('inspectAssignment') }}">{{ item }}</a></p>  <br>
+
+            <h4> 0/30 students turned in </h4>
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+{% endblock %}

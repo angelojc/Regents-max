@@ -1,0 +1,70 @@
+<!-- REGENTS MAX -->
+
+{% extends "base.html" %}
+
+{% block app_content %}
+
+	<style>
+
+		.mega-row {
+			background-color: grey;
+			color: white;
+			box-shadow: 8px 8px 8px lightgrey;
+			padding-left: 30px;
+			padding-right: 30px;
+			padding-top: 5px;
+			text-shadow: 10px 10px 20px lightgrey;
+			border-radius: 10px;
+		}
+
+		.classroom {
+			background-color: darkgray;
+      margin: 10px;
+			padding: 15px;
+      box-shadow: 4px 4px 4px white;
+		}
+
+		.classroom:hover {
+			box-shadow: 8px 8px 8px white;
+		}
+		body {
+			background-color: black;
+		}
+
+	</style>
+
+	<div class="container">
+
+		<br>
+		<br>
+		<br>
+
+		<div class="mega-row big-container border border-secondary" id="row q_container" >
+
+			<h1> Hi, {{ current_user.username}}!</h1>
+
+			<h3> (Button) My Regents Classes </h3>
+			<h3> (Button) Explore Regents </h3>
+			<h3> (Button) Self Study </h3>
+			<br>
+
+			<h3> My Regents Classes </h3>
+
+			<div class="each-row row center" id="row1">
+
+				<div class="class-container col-md-12" >
+					{% for class in classes %}
+				    <div class="classroom" id="LivingEnvironment">
+								<h3>{{ class }}</h3>
+								<a href="{{ url_for('studentClassroom', destination=class) }}"> go to classroom </a>
+						</div>
+
+
+					{% endfor %}
+				</div>
+
+			</div>
+
+	</div>
+
+{% endblock %}

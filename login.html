@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+<style>
+
+	body {
+		background-color: #f9f9f9;
+	}
+
+.content {
+	background-color: white;
+	margin: 10px;
+	padding: 15px;
+	box-shadow: 4px 4px 4px lightgrey;
+}
+
+.classroom:hover {
+	box-shadow: 8px 8px 8px lightgrey;
+}
+
+.big-container {
+	background-color: #f9f9f9;
+}
+
+td {
+  border: 1px solid darkgrey;
+  margin: 10px;
+  padding: 10px;
+}
+
+</style>
+
+  <br>
+  <br>
+  <br>
+
+  <h1>Sign In</h1>
+
+  <div class="conatiner">
+    <div class="row big-container border border-secondary" id="row q_container" >
+
+
+      <div class="content row">
+        <div class="col-md-4">
+          <form action="" method="post">
+            <!-- this is a hidden tag to protect against cross-side request forgery-->
+            {{ form.hidden_tag() }}
+            <p>
+              {{ form.username.label }}<br>
+              {{ form.username(size=32) }}<br>
+              {% for error in form.username.errors %}
+              <span style="color: red;"">{{ error }}</span>
+              {% endfor %}
+            </p>
+            <p>
+              {{ form.password.label }}<br>
+              {{ form.password(size=32) }}<br>
+              {% for error in form.password.errors %}
+              <span style="color: red;">{{ error }}</span>
+              {% endfor %}
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p>{{ form.submit() }}</p>
+          </form>
+          <br>
+            <p>New User?<a href="{{ url_for('register') }}">Click to Register!</a></p>
+          <br>
+          <br>
+          <br>
+          <br>
+
+
+        </div>
+        <div class="col-md-4">
+          <h1>RegentsMax</h1>
+          <h2>Master the Regents</h2>
+        </div>
+
+        <div class="col-md-4">
+          <img src="https://i0.wp.com/precisiontestprep.com/wp-content/uploads/2019/03/New-York-State-Regents-Exams.jpg?ssl=1" height="250px">
+        </div>
+      </div>
+
+
+    </div>
+    <h3> Test Users </h3>
+    <table>
+      <tr>
+        <td>
+          <p><strong>Admin Account</strong></p>
+          <p>User: PierreO </p>
+          <p>Pass: Runner1900! </p>
+          <p>Admin code: admin </p>
+        </td>
+        <td>
+          <p><strong>Teacher Account</strong></p>
+          <p>User: LoganB </p>
+          <p>Pass: Runner1900! </p>
+          <p>Teacher code: teacher </p>
+        </td>
+        <td>
+          <p><strong>Student Account</strong></p>
+          <p>User: DavidC </p>
+          <p>Pass: Runner1900! </p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+{% endblock %}

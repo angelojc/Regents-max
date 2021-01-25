@@ -1,0 +1,134 @@
+<!-- REGENTS MAX -->
+
+{% extends "base.html" %}
+
+{% block app_content %}
+	<style>
+
+    body {
+      background-color: #f9f9f9;
+    }
+
+    .mega-row {
+      background-color: #f9f9f9;
+    }
+
+
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .col-md-2, .col-md-7, .col-md-3, .col-md-5 , .col-md-12 {
+     display: inline;
+   }
+
+   .exam_pic {
+     display: block;
+     margin-left: auto;
+   	 margin-right: auto;
+   }
+
+   .q_header {
+     display: inline-block;
+     margin-left: auto;
+   	 margin-right: auto;
+     text-align: center;
+   }
+
+   .row {
+     background-color: white;
+     margin: 10px;
+     box-shadow: 4px 4px 4px lightgrey;
+   }
+
+   .side-responses {
+     background-color: white;
+     margin: 10px;
+     border: 1px solid lightgrey;
+     box-shadow: 2px 2px 2px lightgrey;
+   }
+
+   .pretty_container {
+    background-color: #f9f9f9;
+    margin: 10px;
+    padding: 15px;
+    position: relative;
+    box-shadow: 2px 2px 2px lightgrey;
+  }
+
+
+	</style>
+
+  <div>
+
+    <br>
+  	<br>
+  	<br>
+    <h1> Hi, {{ current_user.username}}! THESE ARE YOUR ASSESSMENT RESULTS!!</h1> <br>
+
+    <div class="button-row">
+      <div class="overflow-auto form-group col-lg-3">
+        <a href='/student_index' class="btn btn-primary">Back to Classes</a>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+
+
+    <div class="container" >
+      <div class="mega-row big-container border border-secondary" id="row q_container" style="width: 1100px;">
+
+        {% for i in range(details|length) %}
+          <div class="each-row row center" id="row1">
+  					<div class="overflow-auto form-group col-md-7"  style=" width:600px">
+
+              {% if results[i][1] == results[i][0] %}
+  						      <h3 class="q_header"> Question {{ i + 1}}: <span class="correct">Correct</span></h3>
+              {% else %}
+                    <h3 class="q_header"> Question {{ i + 1}}: <span class="incorrect">Incorrect</span></h3>
+              {% endif %}
+
+              <br>
+              <br>
+
+  							<img class="exam_pic" src="{{ details[i][0] }}" style="width:400px">
+
+  						<div class="answersdiv">
+  							<br>
+  							<br>
+
+  						</div>
+  					</div>
+
+  					<div class="side-responses form-group col-md-5" id="extended_response_container" >
+  						<div>
+                <br><br>
+  							<h4>Your answer: {{ results[i][1] }}</h4>
+                <br>
+                <h4>Correct answer: {{ results[i][0] }}</h4>
+                <br>
+                <h4>Your justification:</h4>
+                <p>{{ results[i][2] }}</p>
+                <br>
+                <h4>Teacher feedback:</h4>
+                <p> {{ results[i][4] }} </p>
+
+  						</div>
+  					</div>
+  				</div>
+
+        {% endfor %}
+
+      <div>
+    </div>
+
+  </div>
+
+{% endblock %}

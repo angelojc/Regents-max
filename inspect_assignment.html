@@ -1,0 +1,131 @@
+<!-- REGENTS MAX -->
+
+{% extends "base.html" %}
+
+{% block app_content %}
+
+  <style>
+    body {
+      background-color: #f9f9f9;
+    }
+
+    .each-row {
+      border: 1px solid #000;
+    }
+
+    table {
+       border-spacing: 20px;
+    }
+
+    .student_assignment {
+      background-color: white;
+  		margin: 10px;
+  		padding: 15px;
+  		box-shadow: 4px 4px 4px lightgrey;
+    }
+
+    .student_assignment:hover {
+      box-shadow: 8px 8px 8px lightgrey;
+    }
+
+    .invisible {
+      color: white;
+      text-color: white;
+    }
+
+    .grademe {
+      float: right;
+    }
+
+  </style>
+
+  <div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="mega-row big-container border border-secondary" id="row q_container" >
+
+      <div id="row1">
+
+        <h1> Assignment Review </h1>
+
+        <br>
+        <div class="button-row row">
+          <div class="overflow-auto form-group col-lg-3">
+            <a href='/teacher_classroom/{{ class_name }}' class="btn btn-primary">Back to Class</a>
+          </div>
+        </div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="each-row row center" id="row1">
+        <div class="border overflow-auto form-group col-md-4" >
+
+          <h3> Students </h3>
+          <div class="students">
+            {% for student in class_info %}
+            <!-- loop over the input list of students who have been ASSIGNED this assessment -->
+            <p> {{ student[0] }} {{ student[1] }} </p>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="border overflow-auto form-group col-md-8" >
+          <h2>{{ quiz_name }}</h2>
+          <table>
+            <tr>
+              <td>
+                <h3> {{ finished }} </h3> <span> turned in </span>
+              </td>
+              <td>
+                <h3 class="invisible"> {{ finished }} </h3> <span class="invisible"> turned in </span>
+              </td>
+              <td>
+                <h3> {{ total }} </h3> <span> assigned </span>
+              </td>
+            </tr>
+          </table>
+
+          <br>
+          <h4> Student Work </h4>
+          <div class="student work">
+            <h5> Complete </h5>
+            {% for student in class_info %}
+                {% if student[2] == 'true' %}
+                  <div class="student_assignment col-md-8">
+                      <span> {{ student[0] }} {{ student[1] }} </span> <span class="grademe">	<a href="{{ url_for('gradeAssignment', quiz_name=quiz_name, user=student[3]) }}"> Grade Assignment </a> </span>
+                  </div>
+                {% endif %}
+            {% endfor %}
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h5> Incomplete </h5>
+            {% for student in class_info %}
+                {% if student[2] == 'false' %}
+                  <div class="student_assignment col-md-8">
+                      <p> {{ student[0] }} {{ student[1] }} </p>
+                  </div>
+                {% endif %}
+            {% endfor %}
+          <!-- loop over the input list of students who have been ASSISGNED this assessment. This will lead to a page where teachers can GRADE the free response questions. -->
+          <!-- this means that the student assessment DB needs another column for "teacher feedback" as well as "extended response score" -->
+          <!-- do not worry about computing the real extended response score and incorporating it into the students score -->
+          <!-- the goal is to FINISH the student/teacher web portion of the service by MAY 1st -->
+
+
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
